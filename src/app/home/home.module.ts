@@ -7,12 +7,16 @@ import { IonicModule } from "@ionic/angular";
 
 import { HomePage } from "./home.page";
 import { SharedComponentsModule } from "../shared/components/shared-components.module";
-import { UserProfileComponent } from "../shared/components/user-profile/user-profile.component";
 
 const routes: Routes = [
   {
     path: "",
     component: HomePage
+  },
+  {
+    path: "vendor",
+    loadChildren:
+      "./vendor-details/vendor-details.module#VendorDetailsPageModule"
   }
 ];
 

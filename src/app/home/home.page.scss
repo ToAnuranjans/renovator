@@ -5,8 +5,10 @@ ion-searchbar {
 }
 
 div.service-item {
-  background-color: var(--r-item-color);
-  height: 100%;
+  border: 2px solid var(--r-item-color);
+  img {
+    height: 100px;
+  }
 }
 
 ion-icon {

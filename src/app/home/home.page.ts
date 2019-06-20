@@ -1,50 +1,54 @@
-import { Component, OnInit, ViewEncapsulation } from "@angular/core";
+import { Component, OnInit, OnDestroy } from "@angular/core";
 import { ModalController } from "@ionic/angular";
 import { UserProfileComponent } from "../shared/components/user-profile/user-profile.component";
-import { Observable } from "rxjs";
+import { Subscription } from "rxjs";
+import { VehicalModel, VehicalService } from "../services/vehical.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-home",
   templateUrl: "./home.page.html",
   styleUrls: ["./home.page.scss"]
 })
-export class HomePage implements OnInit {
-  services: Array<{ name: string; id: string; icon_name: string }> = [];
+export class HomePage implements OnInit, OnDestroy {
+  services: Array<VehicalModel> = [];
+  vehicals: VehicalModel[] = [];
 
-  constructor(private modalController: ModalController) {}
+  subscription: Subscription;
+
+  constructor(
+    private modalController: ModalController,
+    private vehicalService: VehicalService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
-    let N = 10;
-
-    const x = Array.apply(null, { length: N }).map(Number.call, Number);
-
-    this.services.push({ name: "Hodna", id: "1", icon_name: "home" });
-    this.services.push({ name: "Hodna", id: "1", icon_name: "home" });
-    this.services.push({ name: "Hodna", id: "1", icon_name: "home" });
-    this.services.push({ name: "Hodna", id: "1", icon_name: "home" });
-    this.services.push({ name: "Hodna", id: "1", icon_name: "home" });
-    this.services.push({ name: "Hodna", id: "1", icon_name: "home" });
-    this.services.push({ name: "Hodna", id: "1", icon_name: "home" });
-
-    this.services.push({ name: "Hodna", id: "1", icon_name: "home" });
-    this.services.push({ name: "Hodna", id: "1", icon_name: "home" });
-    this.services.push({ name: "Hodna", id: "1", icon_name: "home" });
-    this.services.push({ name: "Hodna", id: "1", icon_name: "home" });
-    this.services.push({ name: "Hodna", id: "1", icon_name: "home" });
-    this.services.push({ name: "Hodna", id: "1", icon_name: "home" });
-    this.services.push({ name: "Hodna", id: "1", icon_name: "home" });
+    this.vehicalService.getAll().subscribe(d => (this.services = d));
   }
 
   async openUserProfile() {
-    console.log("clicked");
     const modal = await this.modalController.create({
       component: UserProfileComponent,
       componentProps: { id: "123" }
     });
     await modal.present();
-
     const { data } = await modal.onDidDismiss();
+  }
 
-    console.log({ data });
+  onEntry(e: any): void {
+    const name = e.detail.value;
+    this.vehicalService.findByVehical(name).subscribe(x => {
+      console.log({ name, x });
+      this.vehicals.length = 0;
+      this.vehicals = x;
+    });
+  }
+
+  book(vehical: VehicalModel) {
+    this.router.navigateByUrl(`/home/vendor/${vehical.id}`);
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }
