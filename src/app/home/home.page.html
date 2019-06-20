@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Renovator</ion-title>
+    <ion-buttons slot="end">
+      <ion-icon name="contact" slot="icon-only"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-searchbar
+          placeholder="Which car would you like to do servicing?"
+        ></ion-searchbar>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-thumbnail slot="start">
+            <img
+              src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICTAEAOw=="
+            />
+          </ion-thumbnail>
+          <ion-label>
+            <h2>H2 Title Text</h2>
+            <p>Button on right</p>
+          </ion-label>
+          <ion-button fill="outline" slot="end">View</ion-button>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col *ngFor="let service of services" size="4">
+        <ion-item lines="none">
+          <ion-label text-center>
+            <ion-icon [name]="service.icon_name"></ion-icon>
+            <ion-label position="stacked">{{ service.name }}</ion-label>
+          </ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
