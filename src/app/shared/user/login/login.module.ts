@@ -5,25 +5,24 @@ import { Routes, RouterModule } from "@angular/router";
 
 import { IonicModule } from "@ionic/angular";
 
-import { HomePage } from "./home.page";
-import { SharedComponentsModule } from "../shared/components/shared-components.module";
-import { UserProfileComponent } from "../shared/components/user-profile/user-profile.component";
+import { LoginPage } from "./login.page";
+import { SharedComponentsModule } from "../../components/shared-components.module";
 
 const routes: Routes = [
   {
     path: "",
-    component: HomePage
+    component: LoginPage
   }
 ];
 
 @NgModule({
   imports: [
     CommonModule,
+    SharedComponentsModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes),
-    SharedComponentsModule
+    RouterModule.forChild(routes)
   ],
-  declarations: [HomePage]
+  declarations: [LoginPage]
 })
-export class HomePageModule {}
+export class LoginPageModule {}

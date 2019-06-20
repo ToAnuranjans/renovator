@@ -1,4 +1,19 @@
-ion-icon {
-  font-size: 64px;
+ion-searchbar {
+  --color: var(--ion-color-danger);
+  --placeholder-color: var(--ion-color-danger);
+  --icon-color: var(--ion-color-danger);
 }
 
+div.service-item {
+  background-color: var(--r-item-color);
+  height: 100%;
+}
+
+ion-icon {
+  font-size: 64px;
+  color: var(--ion-color-danger);
+}
+
+div.item-name {
+  color: var(--ion-color-danger);
+}

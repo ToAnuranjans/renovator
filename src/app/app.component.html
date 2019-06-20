@@ -1,3 +1,44 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-menu side="start" menuId="first">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-menu-toggle>
+          <ion-item lines="none" detail [routerLink]="['/', 'home']">
+            <ion-icon name="construct" slot="start"></ion-icon>
+            Services
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item detail [routerLink]="['/', 'blogs']">
+            <ion-icon name="book" slot="start"></ion-icon>
+            Blogs
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item lines="none" detail [routerLink]="['/', 'about']">
+            <ion-icon name="at" slot="start"></ion-icon>
+            About Us
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item lines="none" detail [routerLink]="['/', 'register']">
+            <ion-icon name="person-add" slot="start"></ion-icon>
+            Register
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item lines="none" detail [routerLink]="['/', 'login']">
+            <ion-icon name="log-in" slot="start"></ion-icon>
+            Sign In
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet main></ion-router-outlet>
 </ion-app>
