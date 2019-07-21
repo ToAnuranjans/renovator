@@ -2,9 +2,7 @@ import { NgModule } from "@angular/core";
 import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
 
 const routes: Routes = [
-  { path: "services", loadChildren: "./tabs/tabs.module#TabsPageModule" },
-  { path: "home", loadChildren: "./home/home.module#HomePageModule" },
-  { path: "", redirectTo: "/home", pathMatch: "full" },
+  { path: "", redirectTo: "/introduction", pathMatch: "full" },
   {
     path: "register",
     loadChildren: "./shared/user/register/register.module#RegisterPageModule"
@@ -18,6 +16,12 @@ const routes: Routes = [
   {
     path: "blogs",
     loadChildren: "./blogs/blogs.module#BlogsPageModule"
+  },
+  { path: "services", loadChildren: "./tabs/tabs.module#TabsPageModule" },
+  { path: "home", loadChildren: "./home/home.module#HomePageModule" },
+  {
+    path: "introduction",
+    loadChildren: "./introduction/introduction.module#IntroductionPageModule"
   }
 ];
 @NgModule({

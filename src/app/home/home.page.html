@@ -19,10 +19,21 @@
     <ion-row>
       <ion-col>
         <ion-searchbar
+          #search
           (ionChange)="onEntry($event)"
           debounce="500"
           placeholder="Which car would you like to do servicing?"
         ></ion-searchbar>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="search.value && vehicals.length === 0">
+      <ion-col>
+        <ion-item text-center>
+          <ion-label>
+            <h2>No service provider found</h2>
+            <p>Please search for another provider</p>
+          </ion-label>
+        </ion-item>
       </ion-col>
     </ion-row>
     <ion-row>
@@ -47,4 +58,5 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+  <div #map class="map"></div>
 </ion-content>

@@ -18,3 +18,8 @@ $my-primary-color: red;
 ion-icon {
   color: var(--ion-color-danger);
 }
+
+ion-modal {
+  --height: 100%;
+  background-color: pink;
+}

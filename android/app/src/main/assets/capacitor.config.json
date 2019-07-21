@@ -1,0 +1,7 @@
+{
+  "appId": "io.ionic.starter",
+  "appName": "renovator",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www"
+}
